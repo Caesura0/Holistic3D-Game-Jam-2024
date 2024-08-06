@@ -40,8 +40,19 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        PlayerInput();
-        CheckForInteract();
+        if (!SimpleDialogueManager.Instance.InDialogue )
+        {
+            PlayerInput();
+            CheckForInteract();
+        }
+        else
+        {
+            rb.velocity = Vector2.zero;
+            isMoving = false;
+            animator.SetFloat("MovementX", Mathf.Abs(0));
+            animator.SetFloat("MovementY", Mathf.Abs(0));
+        }
+
     }
 
     private void PlayerInput()
@@ -93,7 +104,7 @@ public class Player : MonoBehaviour
 
     void CheckForInteract()
     {
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.E))
         {
             Vector2 facingDirection = new Vector2(lastMoveX, lastMoveY);
             float distance = 1.7f;
