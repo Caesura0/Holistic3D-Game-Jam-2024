@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEditor.Progress;
 
 
 public class Player : MonoBehaviour
@@ -40,17 +41,60 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        if (!SimpleDialogueManager.Instance.InDialogue )
+        if (!SimpleDialogueManager.Instance.InDialogue)
         {
             PlayerInput();
             CheckForInteract();
+            SelectAction();
         }
         else
         {
             rb.velocity = Vector2.zero;
             isMoving = false;
+            animator.SetBool("IsMoving", isMoving);
             animator.SetFloat("MovementX", Mathf.Abs(0));
             animator.SetFloat("MovementY", Mathf.Abs(0));
+        }
+
+    }
+
+    private void SelectAction()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            InventoryManager.Instance.SelectUISlot(0);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            InventoryManager.Instance.SelectUISlot(1);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            InventoryManager.Instance.SelectUISlot(2);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            InventoryManager.Instance.SelectUISlot(3);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha5))
+        {
+            InventoryManager.Instance.SelectUISlot(4);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha6))
+        {
+            InventoryManager.Instance.SelectUISlot(5);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha7))
+        {
+            InventoryManager.Instance.SelectUISlot(6);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha8))
+        {
+            InventoryManager.Instance.SelectUISlot(7);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha9))
+        {
+            InventoryManager.Instance.SelectUISlot(8);
         }
 
     }
@@ -58,8 +102,8 @@ public class Player : MonoBehaviour
     private void PlayerInput()
     {
         movement = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")).normalized;
-        
-        if(movement != Vector2.zero)
+
+        if (movement != Vector2.zero)
         {
             isMoving = true;
             lastMoveX = movement.x;
@@ -111,8 +155,8 @@ public class Player : MonoBehaviour
             Vector2 lineEndPosition = (Vector2)transform.position + facingDirection * distance;
             Debug.Log(facingDirection);
             Debug.DrawLine(transform.position, lineEndPosition, Color.red, 10f);
-            var hit = Physics2D.Raycast(transform.position, facingDirection, distance, interactableLayer );
-            if(hit.transform != null && hit.transform.TryGetComponent<IInteractable>(out IInteractable interactable))
+            var hit = Physics2D.Raycast(transform.position, facingDirection, distance, interactableLayer);
+            if (hit.transform != null && hit.transform.TryGetComponent<IInteractable>(out IInteractable interactable))
             {
                 interactable.Interact(this);
             }
@@ -129,4 +173,17 @@ public class Player : MonoBehaviour
         return trashPickedUp;
     }
 
+
+    public void AddItem(Item item, int quantity)
+    {
+        InventoryManager.Instance.AddItem(item, quantity);
+
+    }
+
+    public void RemoveItem(Item item, int quantity)
+    {
+        InventoryManager.Instance.RemoveItem(item, quantity);
+    }
+
 }
+

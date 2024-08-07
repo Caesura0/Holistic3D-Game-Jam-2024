@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 6e58927ace756284f87d0a9b8bbf0fba
+guid: d0fced7402156dc4d82fb165e758bb82
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -121,18 +121,18 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: Trash icon
+  - name: squarebuttonshighlight
     originalName: 
-    pivot: {x: 0.47058824, y: -0.6}
+    pivot: {x: 0.48684207, y: -0.040229883}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 17
-      height: 15
-    spriteID: 6bb89215dcb85f34caad4b5a374b4df6
+      width: 76
+      height: 174
+    spriteID: c56db9704ca85f54a8318473856b7953
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -140,29 +140,29 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 4}
+    uvTransform: {x: -7, y: -3}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: 434966415
-    name: Trash icon
+    guid: -592964530
+    name: squarebuttonshighlight
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: Trash icon
+    - name: squarebuttonshighlight
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
-        x: 8
-        y: 9
-        width: 17
-        height: 15
-      spriteId: 6bb89215dcb85f34caad4b5a374b4df6
+        x: 0
+        y: 0
+        width: 96
+        height: 192
+      spriteId: c56db9704ca85f54a8318473856b7953
     linkedCells: []
     parentIndex: -1
   platformSettings: []
   generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 32, y: 32}
+  canvasSize: {x: 96, y: 192}
