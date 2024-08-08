@@ -46,6 +46,7 @@ public class Player : MonoBehaviour
             PlayerInput();
             CheckForInteract();
             SelectAction();
+            CheckForItemUse();
         }
         else
         {
@@ -56,6 +57,82 @@ public class Player : MonoBehaviour
             animator.SetFloat("MovementY", Mathf.Abs(0));
         }
 
+    }
+
+    private void CheckForItemUse()
+    {
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            Item item = (Item)InventoryManager.Instance.GetSelectedItem();
+
+            UseItem(item.itemType);
+        }
+    }
+
+    private void UseItem(ItemType itemType)
+    {
+        switch (itemType)
+        {
+            case ItemType.Bottle:
+                BottleLogic();
+                break;
+            case ItemType.Hoe:
+                HoeLogic();
+                break;
+            case ItemType.PickAxe:
+                PickAxeLogic();
+                break;
+            case ItemType.Axe:
+                AxeLogic();
+                break;
+            case ItemType.WateringCan:
+                WateringCanLogic();
+                break;
+            case ItemType.Seed:
+                SeedLogic();
+                break;
+            default:
+                break;
+        }
+    }
+
+    private void SeedLogic()
+    {
+        //seed planting animation
+        //instantiate 
+    }
+
+    private void WateringCanLogic()
+    {
+        //water can animation
+        //watering sound
+        //instantiate plant
+        //change tile color?
+    }
+
+    private void AxeLogic()
+    {
+        //animation
+        //tree life bar?
+        //tree falling animation
+    }
+
+    private void PickAxeLogic()
+    {
+        throw new NotImplementedException();
+    }
+
+    private void HoeLogic()
+    {
+        throw new NotImplementedException();
+    }
+
+    private void BottleLogic()
+    {
+        //if next to cow
+        //and bottle is empty
+        //remove one bottle
+        //add new item full bottle
     }
 
     private void SelectAction()

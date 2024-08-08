@@ -113,10 +113,10 @@ TextureImporter:
       name: Brown cow animations_0
       rect:
         serializedVersion: 2
-        x: 3
-        y: 226
-        width: 27
-        height: 18
+        x: 0
+        y: 224
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -134,10 +134,10 @@ TextureImporter:
       name: Brown cow animations_1
       rect:
         serializedVersion: 2
-        x: 35
-        y: 226
-        width: 27
-        height: 18
+        x: 32
+        y: 224
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -155,10 +155,10 @@ TextureImporter:
       name: Brown cow animations_2
       rect:
         serializedVersion: 2
-        x: 67
-        y: 226
-        width: 27
-        height: 18
+        x: 64
+        y: 224
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -176,10 +176,10 @@ TextureImporter:
       name: Brown cow animations_3
       rect:
         serializedVersion: 2
-        x: 3
-        y: 194
-        width: 26
-        height: 18
+        x: 0
+        y: 192
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -197,10 +197,10 @@ TextureImporter:
       name: Brown cow animations_4
       rect:
         serializedVersion: 2
-        x: 35
-        y: 194
-        width: 26
-        height: 18
+        x: 32
+        y: 192
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -218,10 +218,10 @@ TextureImporter:
       name: Brown cow animations_5
       rect:
         serializedVersion: 2
-        x: 67
-        y: 194
-        width: 27
-        height: 18
+        x: 64
+        y: 192
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -239,10 +239,10 @@ TextureImporter:
       name: Brown cow animations_6
       rect:
         serializedVersion: 2
-        x: 99
-        y: 194
-        width: 26
-        height: 18
+        x: 96
+        y: 192
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -260,10 +260,10 @@ TextureImporter:
       name: Brown cow animations_7
       rect:
         serializedVersion: 2
-        x: 131
-        y: 194
-        width: 26
-        height: 18
+        x: 128
+        y: 192
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -281,10 +281,10 @@ TextureImporter:
       name: Brown cow animations_8
       rect:
         serializedVersion: 2
-        x: 163
-        y: 194
-        width: 26
-        height: 18
+        x: 160
+        y: 192
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -302,10 +302,10 @@ TextureImporter:
       name: Brown cow animations_9
       rect:
         serializedVersion: 2
-        x: 195
-        y: 194
-        width: 27
-        height: 18
+        x: 192
+        y: 192
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -323,10 +323,10 @@ TextureImporter:
       name: Brown cow animations_10
       rect:
         serializedVersion: 2
-        x: 226
-        y: 194
-        width: 27
-        height: 18
+        x: 224
+        y: 192
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -344,10 +344,10 @@ TextureImporter:
       name: Brown cow animations_11
       rect:
         serializedVersion: 2
-        x: 3
-        y: 162
-        width: 27
-        height: 18
+        x: 0
+        y: 160
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -365,10 +365,10 @@ TextureImporter:
       name: Brown cow animations_12
       rect:
         serializedVersion: 2
-        x: 35
-        y: 162
-        width: 27
-        height: 15
+        x: 32
+        y: 160
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -386,10 +386,10 @@ TextureImporter:
       name: Brown cow animations_13
       rect:
         serializedVersion: 2
-        x: 67
-        y: 162
-        width: 27
-        height: 17
+        x: 64
+        y: 160
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -407,10 +407,10 @@ TextureImporter:
       name: Brown cow animations_14
       rect:
         serializedVersion: 2
-        x: 99
-        y: 162
-        width: 27
-        height: 16
+        x: 96
+        y: 160
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -428,10 +428,10 @@ TextureImporter:
       name: Brown cow animations_15
       rect:
         serializedVersion: 2
-        x: 131
-        y: 162
-        width: 27
-        height: 17
+        x: 128
+        y: 160
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -449,10 +449,10 @@ TextureImporter:
       name: Brown cow animations_16
       rect:
         serializedVersion: 2
-        x: 163
-        y: 162
-        width: 27
-        height: 18
+        x: 160
+        y: 160
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -470,10 +470,10 @@ TextureImporter:
       name: Brown cow animations_17
       rect:
         serializedVersion: 2
-        x: 195
-        y: 162
-        width: 27
-        height: 18
+        x: 192
+        y: 160
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -491,10 +491,10 @@ TextureImporter:
       name: Brown cow animations_18
       rect:
         serializedVersion: 2
-        x: 3
-        y: 130
-        width: 27
-        height: 16
+        x: 0
+        y: 128
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -512,10 +512,10 @@ TextureImporter:
       name: Brown cow animations_19
       rect:
         serializedVersion: 2
-        x: 35
-        y: 130
-        width: 27
-        height: 16
+        x: 32
+        y: 128
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -533,10 +533,10 @@ TextureImporter:
       name: Brown cow animations_20
       rect:
         serializedVersion: 2
-        x: 67
-        y: 130
-        width: 27
-        height: 16
+        x: 64
+        y: 128
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -554,10 +554,10 @@ TextureImporter:
       name: Brown cow animations_21
       rect:
         serializedVersion: 2
-        x: 3
-        y: 98
-        width: 27
-        height: 15
+        x: 0
+        y: 96
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -575,10 +575,10 @@ TextureImporter:
       name: Brown cow animations_22
       rect:
         serializedVersion: 2
-        x: 35
-        y: 98
-        width: 27
-        height: 16
+        x: 32
+        y: 96
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -596,10 +596,10 @@ TextureImporter:
       name: Brown cow animations_23
       rect:
         serializedVersion: 2
-        x: 67
-        y: 98
-        width: 27
-        height: 15
+        x: 64
+        y: 96
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -617,10 +617,10 @@ TextureImporter:
       name: Brown cow animations_24
       rect:
         serializedVersion: 2
-        x: 99
-        y: 98
-        width: 27
-        height: 14
+        x: 96
+        y: 96
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -638,10 +638,10 @@ TextureImporter:
       name: Brown cow animations_25
       rect:
         serializedVersion: 2
-        x: 3
-        y: 66
-        width: 27
-        height: 16
+        x: 0
+        y: 64
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -659,10 +659,10 @@ TextureImporter:
       name: Brown cow animations_26
       rect:
         serializedVersion: 2
-        x: 35
-        y: 66
-        width: 27
-        height: 14
+        x: 32
+        y: 64
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -680,10 +680,10 @@ TextureImporter:
       name: Brown cow animations_27
       rect:
         serializedVersion: 2
-        x: 67
-        y: 66
-        width: 27
-        height: 14
+        x: 64
+        y: 64
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -701,10 +701,10 @@ TextureImporter:
       name: Brown cow animations_28
       rect:
         serializedVersion: 2
-        x: 99
-        y: 66
-        width: 27
-        height: 14
+        x: 96
+        y: 64
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -722,10 +722,10 @@ TextureImporter:
       name: Brown cow animations_29
       rect:
         serializedVersion: 2
-        x: 131
-        y: 66
-        width: 27
-        height: 14
+        x: 128
+        y: 64
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -743,10 +743,10 @@ TextureImporter:
       name: Brown cow animations_30
       rect:
         serializedVersion: 2
-        x: 163
-        y: 66
-        width: 27
-        height: 16
+        x: 160
+        y: 64
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -764,10 +764,10 @@ TextureImporter:
       name: Brown cow animations_31
       rect:
         serializedVersion: 2
-        x: 195
-        y: 66
-        width: 27
-        height: 18
+        x: 192
+        y: 64
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -785,10 +785,10 @@ TextureImporter:
       name: Brown cow animations_32
       rect:
         serializedVersion: 2
-        x: 3
-        y: 34
-        width: 27
-        height: 18
+        x: 0
+        y: 32
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -806,10 +806,10 @@ TextureImporter:
       name: Brown cow animations_33
       rect:
         serializedVersion: 2
-        x: 35
-        y: 34
-        width: 28
-        height: 18
+        x: 32
+        y: 32
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -827,10 +827,10 @@ TextureImporter:
       name: Brown cow animations_34
       rect:
         serializedVersion: 2
-        x: 67
-        y: 34
-        width: 28
-        height: 18
+        x: 64
+        y: 32
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -848,10 +848,10 @@ TextureImporter:
       name: Brown cow animations_35
       rect:
         serializedVersion: 2
-        x: 99
-        y: 34
-        width: 27
-        height: 18
+        x: 96
+        y: 32
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -869,10 +869,10 @@ TextureImporter:
       name: Brown cow animations_38
       rect:
         serializedVersion: 2
-        x: 67
-        y: 2
-        width: 27
-        height: 28
+        x: 64
+        y: 0
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -887,13 +887,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Brown cow animations_42
+      name: Brown cow animations_36
       rect:
         serializedVersion: 2
-        x: 3
-        y: 2
-        width: 27
-        height: 28
+        x: 0
+        y: 0
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -901,20 +901,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 03496090727a57541b354796c746f4bd
-      internalID: 1916966894
+      spriteID: 611b00ad1d5723142af84b55691eae7f
+      internalID: -166667063
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Brown cow animations_43
+      name: Brown cow animations_37
       rect:
         serializedVersion: 2
-        x: 35
-        y: 2
-        width: 27
-        height: 28
+        x: 32
+        y: 0
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -922,20 +922,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c59d6305c0d0d2043871b091605c8e71
-      internalID: 1828000961
+      spriteID: b6505d5415781924f952f9577de9d628
+      internalID: 404996654
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Brown cow animations_44
+      name: Brown cow animations_39
       rect:
         serializedVersion: 2
-        x: 99
-        y: 2
-        width: 27
-        height: 28
+        x: 96
+        y: 0
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -943,20 +943,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a790eb4e78a502443b5f5c0c1f773709
-      internalID: 1271325675
+      spriteID: e1724357f14a5dc4593e8f9f5e5febda
+      internalID: -1080475395
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Brown cow animations_45
+      name: Brown cow animations_40
       rect:
         serializedVersion: 2
-        x: 131
-        y: 2
-        width: 27
-        height: 28
+        x: 128
+        y: 0
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -964,20 +964,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9ba2fa33b43c8a14bbb19976695ae616
-      internalID: 1319840159
+      spriteID: 6d23bfc5fb9a0d543b1a44fcda53c2e8
+      internalID: 741211229
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Brown cow animations_46
+      name: Brown cow animations_41
       rect:
         serializedVersion: 2
-        x: 163
-        y: 2
-        width: 27
-        height: 28
+        x: 160
+        y: 0
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -985,8 +985,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ea7f325b84b00e545be047fca631ec69
-      internalID: -1528029955
+      spriteID: f48a381240405c34883f1f878de5a8bd
+      internalID: 954466454
       vertices: []
       indices: 
       edges: []
@@ -1039,11 +1039,6 @@ TextureImporter:
       Brown cow animations_4: 204642947
       Brown cow animations_40: 741211229
       Brown cow animations_41: 954466454
-      Brown cow animations_42: 1916966894
-      Brown cow animations_43: 1828000961
-      Brown cow animations_44: 1271325675
-      Brown cow animations_45: 1319840159
-      Brown cow animations_46: -1528029955
       Brown cow animations_5: 1964471327
       Brown cow animations_6: 293921227
       Brown cow animations_7: 202017167

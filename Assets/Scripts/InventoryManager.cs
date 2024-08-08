@@ -41,8 +41,20 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
+    public bool ContainsItem(ItemType type)
+    {
+        foreach(Item item in itemList.Keys)
+        {
+            if(item.itemType == type) return true;
+        }
+        return false;
+    }
 
-
+    public Item? GetSelectedItem()
+    {
+        if (inventoryUISlotList.Count == 0) return null;
+        return inventoryUISlotList[selectedInventoryIndex].GetItemInSlot(out int count);
+    }
 
     void RedrawUI()
     {
