@@ -32,8 +32,10 @@ public class InventoryManager : MonoBehaviour
 
     public void SelectUISlot(int index)
     {
+        Debug.Log("selected index" + index);
         if (inventoryUISlotList.Count > index)
         {
+            Debug.Log("inventory slot count " + inventoryUISlotList.Count);
             inventoryUISlotList[selectedInventoryIndex].UpdateSelectedVisual(false);
             selectedInventoryIndex = index;
 
@@ -69,8 +71,9 @@ public class InventoryManager : MonoBehaviour
             itemSlot.UpdateUI(item.Key, item.Value);
             inventoryUISlotList.Add(itemSlot);
         }
+        SelectUISlot(selectedInventoryIndex);
 
-        
+
     }
 
 

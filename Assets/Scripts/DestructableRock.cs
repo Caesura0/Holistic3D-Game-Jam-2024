@@ -5,7 +5,7 @@ using UnityEngine;
 using DG.DemiLib;
 
 
-public class DestructableRock : MonoBehaviour, IInteractable
+public class DestructableRock : MonoBehaviour, IItemInteractable
 {
     [SerializeField] Item neededItem;
     int hitCounter;
@@ -13,25 +13,27 @@ public class DestructableRock : MonoBehaviour, IInteractable
     [SerializeField] float strength = .1f;
     [SerializeField] float shakeTime = .8f;
     [SerializeField] int vibrato = 6;
+    [SerializeField] GameObject visual;
 
 
-    public void Interact(Player player)
+    public bool ItemInteract()
     {
-        //hitCounter++;
-        transform.DOShakePosition(shakeTime, strength, vibrato, 0);
-        if (hitCounter > 2)
-        {
-            Destroy(gameObject);
-            //playsound
-            //playparticleeffect
-        }
         if (InventoryManager.Instance.GetSelectedItem() != null && InventoryManager.Instance.GetSelectedItem() == neededItem)
         {
-
-            
+            hitCounter++;
+            visual.transform.DOShakePosition(shakeTime, strength, vibrato, 0);
+            if (hitCounter > 2)
+            {
+                Destroy(gameObject);
+                //playsound
+                //playparticleeffect
+                
+            }
+            return true;
+            //play hit sound
         }
+        return false;
 
-        
     }
 
 

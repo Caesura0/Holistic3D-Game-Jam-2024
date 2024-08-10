@@ -16,7 +16,7 @@ public class InventoryUISlot : MonoBehaviour
     int count;
     private void Start()
     {
-        UpdateSelectedVisual(false);
+        //UpdateSelectedVisual(false);
     }
 
     public void UpdateUI(Item item, int count)

@@ -1,9 +1,7 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using static UnityEditor.Progress;
+
 
 
 public class Player : MonoBehaviour
@@ -14,6 +12,13 @@ public class Player : MonoBehaviour
 
     [SerializeField] float moveSpeed;
     [SerializeField] LayerMask interactableLayer;
+
+
+
+    //for visualizing the circlecast
+    [SerializeField] float duration = 1f;
+    [SerializeField] int segments = 36; // Number of segments to form the circle
+
 
     int trashPickedUp;
 
@@ -28,11 +33,16 @@ public class Player : MonoBehaviour
 
     public Vector2 movement;
 
-    
 
+    bool canMove = true;
 
 
     Rigidbody2D rb;
+    float radius = .3f;
+
+
+    private static readonly int IdleState = Animator.StringToHash("Idle");
+
     private void Awake()
     {
         animator = GetComponentInChildren<Animator>();
@@ -41,7 +51,7 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        if (!SimpleDialogueManager.Instance.InDialogue)
+        if (!SimpleDialogueManager.Instance.InDialogue && canMove)
         {
             PlayerInput();
             CheckForInteract();
@@ -50,6 +60,7 @@ public class Player : MonoBehaviour
         }
         else
         {
+            movement = Vector2.zero;
             rb.velocity = Vector2.zero;
             isMoving = false;
             animator.SetBool("IsMoving", isMoving);
@@ -69,8 +80,30 @@ public class Player : MonoBehaviour
         }
     }
 
+    void CheckForItemInteractable()
+    {
+        Debug.Log("check for item Interactable");
+        Vector2 facingDirection = new Vector2(lastMoveX, lastMoveY);
+        float distance = .6f;
+        RaycastHit2D[] hits = Physics2D.CircleCastAll((Vector2)transform.position + facingDirection *.5f * 1.8f, radius, facingDirection, distance, interactableLayer);
+        // Sort the hits by distance from the center of the circle
+        System.Array.Sort(hits, (hit1, hit2) => hit1.distance.CompareTo(hit2.distance));
+ 
+        foreach (var hit in hits)
+        {
+            if (hit.transform != null && hit.transform.TryGetComponent<IItemInteractable>(out IItemInteractable itemInteractable))
+            {
+                if (itemInteractable.ItemInteract())
+                {
+                    break;
+                }
+            }
+        }
+
+    }
     private void UseItem(ItemType itemType)
     {
+        canMove = false;
         switch (itemType)
         {
             case ItemType.Bottle:
@@ -92,19 +125,24 @@ public class Player : MonoBehaviour
                 SeedLogic();
                 break;
             default:
+                Debug.Log(canMove);
+                canMove = true;
                 break;
         }
     }
 
     private void SeedLogic()
     {
+        OnAnimationEnd();
+
         //seed planting animation
         //instantiate 
     }
 
     private void WateringCanLogic()
     {
-        //water can animation
+        AnimationPlay("Watering");
+
         //watering sound
         //instantiate plant
         //change tile color?
@@ -112,25 +150,31 @@ public class Player : MonoBehaviour
 
     private void AxeLogic()
     {
-        //animation
+        AnimationPlay("Axe");
+
         //tree life bar?
         //tree falling animation
     }
 
     private void PickAxeLogic()
     {
-        throw new NotImplementedException();
+        AnimationPlay("Hoe");
+
+
     }
 
     private void HoeLogic()
     {
-        throw new NotImplementedException();
+        AnimationPlay("Hoe");
+
     }
 
     private void BottleLogic()
     {
+        CheckForItemInteractable();
         //if next to cow
         //and bottle is empty
+        //play bottle sound
         //remove one bottle
         //add new item full bottle
     }
@@ -228,15 +272,19 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.E))
         {
             Vector2 facingDirection = new Vector2(lastMoveX, lastMoveY);
-            float distance = 1.7f;
-            Vector2 lineEndPosition = (Vector2)transform.position + facingDirection * distance;
-            Debug.Log(facingDirection);
-            Debug.DrawLine(transform.position, lineEndPosition, Color.red, 10f);
-            var hit = Physics2D.Raycast(transform.position, facingDirection, distance, interactableLayer);
-            if (hit.transform != null && hit.transform.TryGetComponent<IInteractable>(out IInteractable interactable))
+            float distance = .6f;
+            RaycastHit2D[] hits = Physics2D.CircleCastAll((Vector2)transform.position + facingDirection * .4f, radius, facingDirection, distance, interactableLayer);
+            // Sort the hits by distance from the center of the circle
+            System.Array.Sort(hits, (hit1, hit2) => hit1.distance.CompareTo(hit2.distance));
+            foreach (RaycastHit2D hit in hits)
             {
-                interactable.Interact(this);
+                if (hit.transform != null && hit.transform.TryGetComponent<IInteractable>(out IInteractable interactable))
+                {
+                    interactable.Interact(this);
+                }
             }
+  
+
         }
     }
 
@@ -261,6 +309,23 @@ public class Player : MonoBehaviour
     {
         InventoryManager.Instance.RemoveItem(item, quantity);
     }
+
+
+    private void AnimationPlay(string animationName)
+    {
+        // Play the animation
+        animator.Play(animationName);
+
+
+    }
+
+    public void OnAnimationEnd()
+    {
+
+        CheckForItemInteractable();
+        canMove = true;
+    }
+
 
 }
 

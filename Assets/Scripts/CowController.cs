@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CowController : MonoBehaviour, IInteractable
+public class CowController : MonoBehaviour, IItemInteractable
 {
     [SerializeField] float idleSwitchMinTime = 10f; // Minimum time between switches
     [SerializeField] float idleSwitchMaxTime = 17f; // Maximum time between switches
@@ -39,9 +39,11 @@ public class CowController : MonoBehaviour, IInteractable
         animator.SetFloat("IdleType", idleType);
     }
 
-    public void Interact(Player player)
+
+
+    public bool ItemInteract()
     {
-        if(InventoryManager.Instance.GetSelectedItem() == itemToBeUsed)
+        if (InventoryManager.Instance.GetSelectedItem() == itemToBeUsed)
         {
             if (InventoryManager.Instance.ContainsItem(ItemType.Bottle))
             {
@@ -49,12 +51,14 @@ public class CowController : MonoBehaviour, IInteractable
                 Debug.Log("containsBottle");
                 InventoryManager.Instance.RemoveItem(itemToBeUsed, 1);
                 InventoryManager.Instance.AddItem(itemToBeAdded, 1);
+                
             }
             else
             {
                 Debug.Log("No Bottle");
             }
+            return true;
         }
-
+        return false;
     }
 }
