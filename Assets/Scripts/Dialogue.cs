@@ -6,7 +6,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "dialogue", menuName = "Dialogues")]
 public class Dialogue : ScriptableObject
 {
-    public string conversantName;
+    //public string conversantName;
     public List<string> dialogueLines;
     //public List<ItemConfig> inventoryItemList;
     bool hasGivenItems;

@@ -1,11 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Progress;
 
 public class DialogueTrigger : MonoBehaviour, IInteractable
 {
 
     [SerializeField] List<Dialogue> dialogueList;
+    [SerializeField] List<Dialogue> questStartedDialogueList;
+
+    [SerializeField] List<Dialogue> questCompleteDialogueList;
     [SerializeField] string conversantName;
 
     //[SerializeField] bool shouldRandomize;
@@ -14,20 +18,27 @@ public class DialogueTrigger : MonoBehaviour, IInteractable
 
     List<Dialogue> validDialogueList;
 
+    Quest NPCQuest;
+    bool questGiven = false;
 
     private void Start()
     {
         validDialogueList = new List<Dialogue>();
+        NPCQuest = GetComponent<Quest>();
     }
 
+    public string GetName()
+    {
+        return conversantName;
+    }
     public void Interact(Player interactor)
     {
 
-        foreach (Dialogue dialogue in dialogueList)
+        foreach (Dialogue dialogue in GetDialogueToSay())
         {
             if (!dialogue.hasSaidDialogue)
             {
-                SimpleDialogueManager.Instance.StartDialogue(dialogue, conversantName);
+                SimpleDialogueManager.Instance.StartDialogue(dialogue, this);
                 return;
             }
             else if (dialogue.isRepeatableDialogue)
@@ -42,15 +53,46 @@ public class DialogueTrigger : MonoBehaviour, IInteractable
             int choices;
             choices = validDialogueList.Count - 1;
             int i = Random.Range(0, choices);
-            SimpleDialogueManager.Instance.StartDialogue(validDialogueList[i], conversantName);
+            SimpleDialogueManager.Instance.StartDialogue(validDialogueList[i], this) ;
         }
         else
         {
-            SimpleDialogueManager.Instance.StartDialogue(null, conversantName);
+            SimpleDialogueManager.Instance.StartDialogue(null, this);
         }
 
 
     }
 
+    public List<Dialogue> GetDialogueToSay()
+    {
+        
+        if(NPCQuest != null && questCompleteDialogueList != null && NPCQuest.GetQuestStatus() == QuestStatus.Finished)
+        {
+            return questCompleteDialogueList;
+        }
+        else if(NPCQuest != null && questStartedDialogueList != null && NPCQuest.GetQuestStatus() == QuestStatus.Started)
+        {
+            return questStartedDialogueList;
+        }
+        else
+        {
+            return dialogueList;
+        }
+    }
+    public void OnDialogueEnd()
+    {
+        Debug.Log(NPCQuest.GetQuestName());
+        if (NPCQuest != null && !questGiven)
+        {
+            Debug.Log("quest inside");
+            NPCQuest.StartQuest();
+            questGiven = true;
+            //QuestUIManager.Instance.AddQuest(NPCQuest);
+        }
+
+                
+
+
+    }
 
 }

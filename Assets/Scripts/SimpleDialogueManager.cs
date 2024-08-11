@@ -16,10 +16,13 @@ public class SimpleDialogueManager : MonoBehaviour
     [SerializeField] Dialogue defaultDialogue;
 
     Dialogue currentDialogue;
+    DialogueTrigger conversant;
 
     int index = 1;
 
     public bool InDialogue { get; private set; }
+
+    
 
 
     public static SimpleDialogueManager Instance;
@@ -33,10 +36,14 @@ public class SimpleDialogueManager : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-
-    void Update()
+    private void Start()
     {
-        if (currentDialogue != null && (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Space)))
+        PlayerInput.Instance.OnInteractAction += PlayerInput_OnInteractAction;
+    }
+
+    private void PlayerInput_OnInteractAction(object sender, System.EventArgs e)
+    {
+        if (currentDialogue != null)
         {
             if (dialogueText.text == currentDialogue.dialogueLines[index])
             {
@@ -48,13 +55,20 @@ public class SimpleDialogueManager : MonoBehaviour
                 dialogueText.text = currentDialogue.dialogueLines[index];
             }
         }
+    }
+
+    void Update()
+    {
+
 
     }
 
 
-    public void StartDialogue(Dialogue dialogue, string conversant)
+    public void StartDialogue(Dialogue dialogue, DialogueTrigger conversant)
     {
         InDialogue = true;
+        this.conversant = conversant;
+
         gameObject.SetActive(true);
         index = 0;
         dialogueText.text = string.Empty;
@@ -67,7 +81,7 @@ public class SimpleDialogueManager : MonoBehaviour
             currentDialogue = defaultDialogue;
         }
 
-        conversantName.text = conversant;
+        conversantName.text = conversant.GetName();
         StartCoroutine(TypeLine());
     }
 
@@ -90,7 +104,7 @@ public class SimpleDialogueManager : MonoBehaviour
         }
         else
         {
-            //currentDialogue.OnDialogueEnd();
+            conversant.OnDialogueEnd();
             currentDialogue = null;
             InDialogue = false;
             gameObject.SetActive(false);

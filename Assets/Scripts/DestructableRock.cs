@@ -16,6 +16,7 @@ public class DestructableRock : MonoBehaviour, IItemInteractable
     [SerializeField] GameObject visual;
 
 
+
     public bool ItemInteract()
     {
         if (InventoryManager.Instance.GetSelectedItem() != null && InventoryManager.Instance.GetSelectedItem() == neededItem)

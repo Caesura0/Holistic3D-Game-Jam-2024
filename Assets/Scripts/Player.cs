@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 
 
@@ -22,7 +24,7 @@ public class Player : MonoBehaviour
 
     int trashPickedUp;
 
-
+    
     public float lastMoveX;
     public float lastMoveY;
 
@@ -45,18 +47,40 @@ public class Player : MonoBehaviour
 
     private void Awake()
     {
+
         animator = GetComponentInChildren<Animator>();
         rb = GetComponent<Rigidbody2D>();
+        
+    }
+
+    private void Start()
+    {
+        PlayerInput.Instance.OnInteractAction += PlayerInput_OnInteractAction;
+        PlayerInput.Instance.OnItemUseAction += PlayerInput_OnItemUseAction;
+        PlayerInput.Instance.OnHotkeySelectedAction += Instance_OnHotkeySelectedAction;
+    }
+
+    private void Instance_OnHotkeySelectedAction(object sender, PlayerInput.HotkeySelectedEventArgs e)
+    {
+        InventoryManager.Instance.SelectUISlot(e.HotkeyValue);
+    }
+
+    private void PlayerInput_OnItemUseAction(object sender, EventArgs e)
+    {
+        CheckForItemUse();
+    }
+
+    private void PlayerInput_OnInteractAction(object sender, EventArgs e)
+    {
+        CheckForInteract();
     }
 
     private void Update()
     {
         if (!SimpleDialogueManager.Instance.InDialogue && canMove)
         {
-            PlayerInput();
-            CheckForInteract();
-            SelectAction();
-            CheckForItemUse();
+            Movement();
+  
         }
         else
         {
@@ -72,17 +96,19 @@ public class Player : MonoBehaviour
 
     private void CheckForItemUse()
     {
-        if (Input.GetKeyDown(KeyCode.X))
+        if (canMove && !SimpleDialogueManager.Instance.InDialogue)
         {
-            Item item = (Item)InventoryManager.Instance.GetSelectedItem();
-
-            UseItem(item.itemType);
+            Item? item = InventoryManager.Instance.GetSelectedItem();
+            if (item.HasValue)
+            {
+                ItemType itemType = item.Value.itemType;
+                UseItem(itemType);
+            }
         }
     }
 
     void CheckForItemInteractable()
     {
-        Debug.Log("check for item Interactable");
         Vector2 facingDirection = new Vector2(lastMoveX, lastMoveY);
         float distance = .6f;
         RaycastHit2D[] hits = Physics2D.CircleCastAll((Vector2)transform.position + facingDirection *.5f * 1.8f, radius, facingDirection, distance, interactableLayer);
@@ -179,50 +205,11 @@ public class Player : MonoBehaviour
         //add new item full bottle
     }
 
-    private void SelectAction()
-    {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            InventoryManager.Instance.SelectUISlot(0);
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            InventoryManager.Instance.SelectUISlot(1);
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            InventoryManager.Instance.SelectUISlot(2);
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha4))
-        {
-            InventoryManager.Instance.SelectUISlot(3);
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha5))
-        {
-            InventoryManager.Instance.SelectUISlot(4);
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha6))
-        {
-            InventoryManager.Instance.SelectUISlot(5);
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha7))
-        {
-            InventoryManager.Instance.SelectUISlot(6);
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha8))
-        {
-            InventoryManager.Instance.SelectUISlot(7);
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha9))
-        {
-            InventoryManager.Instance.SelectUISlot(8);
-        }
 
-    }
 
-    private void PlayerInput()
+    private void Movement()
     {
-        movement = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")).normalized;
+        movement = PlayerInput.Instance.Movement.normalized;
 
         if (movement != Vector2.zero)
         {
@@ -269,7 +256,7 @@ public class Player : MonoBehaviour
 
     void CheckForInteract()
     {
-        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.E))
+        if (canMove && !SimpleDialogueManager.Instance.InDialogue)
         {
             Vector2 facingDirection = new Vector2(lastMoveX, lastMoveY);
             float distance = .6f;
@@ -281,6 +268,7 @@ public class Player : MonoBehaviour
                 if (hit.transform != null && hit.transform.TryGetComponent<IInteractable>(out IInteractable interactable))
                 {
                     interactable.Interact(this);
+                    return;
                 }
             }
   

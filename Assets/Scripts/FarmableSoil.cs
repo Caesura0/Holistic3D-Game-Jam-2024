@@ -98,4 +98,8 @@ public class FarmableSoil : MonoBehaviour, IItemInteractable
         isPlanted = false;
     }
 
+    public void Interact(Player player)
+    {
+        throw new System.NotImplementedException();
+    }
 }
