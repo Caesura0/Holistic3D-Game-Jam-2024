@@ -12,6 +12,8 @@ public class CowController : MonoBehaviour, IItemInteractable
 
     private Animator animator;
 
+    bool isMilked = false;
+
     private void Start()
     {
         animator = GetComponent<Animator>();
@@ -43,6 +45,7 @@ public class CowController : MonoBehaviour, IItemInteractable
 
     public bool ItemInteract()
     {
+        if(isMilked) { return false; }
         if (InventoryManager.Instance.GetSelectedItem() == itemToBeUsed)
         {
             if (InventoryManager.Instance.ContainsItem(ItemType.Bottle))
@@ -51,7 +54,7 @@ public class CowController : MonoBehaviour, IItemInteractable
                 Debug.Log("containsBottle");
                 InventoryManager.Instance.RemoveItem(itemToBeUsed, 1);
                 InventoryManager.Instance.AddItem(itemToBeAdded, 1);
-                
+                isMilked = true;
             }
             else
             {

@@ -22,6 +22,8 @@ public class PlayerInput : MonoBehaviour
     public event EventHandler OnInteractAction;
     public event EventHandler OnItemUseAction;
     public event EventHandler OnQuestUIAction;
+    public event EventHandler OnRunCanceledAction;
+    public event EventHandler OnRunAction;
     public event EventHandler<HotkeySelectedEventArgs> OnHotkeySelectedAction;
     //public event EventHandler OnPauseAction;
     public Vector2 Movement {  get; private set; }
@@ -50,6 +52,19 @@ public class PlayerInput : MonoBehaviour
         controls.KeyboardGamepad.Hotkeys.performed += OnHotkeySelected_Performed;
 
         controls.KeyboardGamepad.QuestUI.performed += QuestUI_performed; ;
+
+        controls.KeyboardGamepad.Run.performed += Run_performed;
+        controls.KeyboardGamepad.Run.canceled += Run_canceled;
+    }
+
+    private void Run_canceled(InputAction.CallbackContext obj)
+    {
+        OnRunCanceledAction?.Invoke(this, EventArgs.Empty);
+    }
+
+    private void Run_performed(InputAction.CallbackContext obj)
+    {
+        OnRunAction?.Invoke(this, EventArgs.Empty);
     }
 
     private void QuestUI_performed(InputAction.CallbackContext obj)

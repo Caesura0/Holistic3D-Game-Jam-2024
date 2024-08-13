@@ -12,6 +12,8 @@ public class DialogueTrigger : MonoBehaviour, IInteractable
     [SerializeField] List<Dialogue> questCompleteDialogueList;
     [SerializeField] string conversantName;
 
+    [SerializeField] ItemChest rewardChest;
+
     //[SerializeField] bool shouldRandomize;
 
 
@@ -25,6 +27,7 @@ public class DialogueTrigger : MonoBehaviour, IInteractable
     {
         validDialogueList = new List<Dialogue>();
         NPCQuest = GetComponent<Quest>();
+        NPCQuest.chest = rewardChest;
     }
 
     public string GetName()
@@ -66,11 +69,11 @@ public class DialogueTrigger : MonoBehaviour, IInteractable
     public List<Dialogue> GetDialogueToSay()
     {
         
-        if(NPCQuest != null && questCompleteDialogueList != null && NPCQuest.GetQuestStatus() == QuestStatus.Finished)
+        if(NPCQuest != null && questCompleteDialogueList.Count > 0 && NPCQuest.GetQuestStatus() == QuestStatus.Finished)
         {
             return questCompleteDialogueList;
         }
-        else if(NPCQuest != null && questStartedDialogueList != null && NPCQuest.GetQuestStatus() == QuestStatus.Started)
+        else if(NPCQuest != null && questStartedDialogueList.Count > 0 && NPCQuest.GetQuestStatus() == QuestStatus.Started)
         {
             return questStartedDialogueList;
         }

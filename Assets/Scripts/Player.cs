@@ -11,18 +11,21 @@ public class Player : MonoBehaviour
 
 
     public static event Action<int> OnTrashPickedUp;
+    public static event Action<int> OnSulferPickedUp;
+    public static event Action<int> OnCharcolPickedUp;
+    public static event Action<int> OnWoodPickedUp;
 
     [SerializeField] float moveSpeed;
+    [SerializeField] float runSpeed;
     [SerializeField] LayerMask interactableLayer;
 
 
+   
 
-    //for visualizing the circlecast
-    [SerializeField] float duration = 1f;
-    [SerializeField] int segments = 36; // Number of segments to form the circle
-
-
-    int trashPickedUp;
+    public int TrashPickedUp {  get; private set; }
+    public int SulferPickedUp {  get; private set; }
+    public int CharcolPickedUp {  get; private set; }
+    public int WoodPickedUp {  get; private set; }
 
     
     public float lastMoveX;
@@ -30,6 +33,8 @@ public class Player : MonoBehaviour
 
     //bool canMove = true;
     bool isMoving;
+    bool isRunning;
+
 
     Animator animator;
 
@@ -43,7 +48,6 @@ public class Player : MonoBehaviour
     float radius = .3f;
 
 
-    private static readonly int IdleState = Animator.StringToHash("Idle");
 
     private void Awake()
     {
@@ -58,6 +62,18 @@ public class Player : MonoBehaviour
         PlayerInput.Instance.OnInteractAction += PlayerInput_OnInteractAction;
         PlayerInput.Instance.OnItemUseAction += PlayerInput_OnItemUseAction;
         PlayerInput.Instance.OnHotkeySelectedAction += Instance_OnHotkeySelectedAction;
+        PlayerInput.Instance.OnRunCanceledAction += Instance_OnRunCanceledAction;
+        PlayerInput.Instance.OnRunAction += Instance_OnRunAction;
+    }
+
+    private void Instance_OnRunAction(object sender, EventArgs e)
+    {
+        isRunning = true;
+    }
+
+    private void Instance_OnRunCanceledAction(object sender, EventArgs e)
+    {
+        isRunning = false;
     }
 
     private void Instance_OnHotkeySelectedAction(object sender, PlayerInput.HotkeySelectedEventArgs e)
@@ -205,7 +221,10 @@ public class Player : MonoBehaviour
         //add new item full bottle
     }
 
-
+    public void CanMove(bool canMove)
+    {
+        this.canMove = canMove; 
+    }
 
     private void Movement()
     {
@@ -229,7 +248,14 @@ public class Player : MonoBehaviour
         {
             isMoving = false;
         }
-
+        if(isRunning)
+        {
+            animator.speed = 1.5f;
+        }
+        else
+        {
+            animator.speed = 1f;
+        }
         animator.SetBool("IsMoving", isMoving);
         animator.SetFloat("MovementX", movement.x);
         animator.SetFloat("MovementY", movement.y);
@@ -249,7 +275,11 @@ public class Player : MonoBehaviour
     void Move()
     {
 
-        rb.velocity = movement * moveSpeed * Time.deltaTime;
+
+        float speed;
+        speed = isRunning ? runSpeed : moveSpeed;
+
+        rb.velocity = movement * speed * Time.deltaTime;
 
     }
 
@@ -278,12 +308,31 @@ public class Player : MonoBehaviour
 
     public void PickUpGarbage()
     {
-        trashPickedUp++;
-        OnTrashPickedUp?.Invoke(trashPickedUp);
+        TrashPickedUp++;
+        OnTrashPickedUp?.Invoke(TrashPickedUp);
     }
+
+
+
     public int GetGarbagePickedUp()
     {
-        return trashPickedUp;
+        return TrashPickedUp;
+    }
+
+    public void SulferPickup()
+    {
+        SulferPickedUp++;
+        OnSulferPickedUp?.Invoke(SulferPickedUp);
+    }
+    public void CharcolPickup()
+    {
+        CharcolPickedUp++;
+        OnCharcolPickedUp?.Invoke(CharcolPickedUp);
+    }
+    public void WoodPickup()
+    {
+        WoodPickedUp++;
+        OnWoodPickedUp?.Invoke(WoodPickedUp);
     }
 
 

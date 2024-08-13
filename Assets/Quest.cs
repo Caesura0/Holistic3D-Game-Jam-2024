@@ -19,6 +19,8 @@ public abstract class Quest : MonoBehaviour
     [SerializeField] protected string questName;
     [SerializeField] public QuestStatus questStatus;
 
+    public ItemChest chest;
+
 
     public virtual string GetQuestName()
     {
@@ -37,6 +39,7 @@ public abstract class Quest : MonoBehaviour
         questStatus = QuestStatus.Finished;
         OnAnyQuestFinished?.Invoke(this, EventArgs.Empty);
         QuestUIManager.Instance.RedrawQuestList();
+        chest.UnlockChest(); 
     }
     public virtual QuestStatus GetQuestStatus()
     {

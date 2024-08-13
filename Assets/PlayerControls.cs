@@ -71,6 +71,15 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Run"",
+                    ""type"": ""Button"",
+                    ""id"": ""a389e331-b9ea-4830-8dc0-c8df4f2feebc"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -425,6 +434,28 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""action"": ""QuestUI"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""812b8287-a7ff-4c73-aa14-128de458b57a"",
+                    ""path"": ""<Keyboard>/shift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Run"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e58e9820-372c-4bdf-81b0-b8e69052b77f"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Run"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -444,6 +475,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_KeyboardGamepad_UseItem = m_KeyboardGamepad.FindAction("UseItem", throwIfNotFound: true);
         m_KeyboardGamepad_Hotkeys = m_KeyboardGamepad.FindAction("Hotkeys", throwIfNotFound: true);
         m_KeyboardGamepad_QuestUI = m_KeyboardGamepad.FindAction("QuestUI", throwIfNotFound: true);
+        m_KeyboardGamepad_Run = m_KeyboardGamepad.FindAction("Run", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -510,6 +542,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_KeyboardGamepad_UseItem;
     private readonly InputAction m_KeyboardGamepad_Hotkeys;
     private readonly InputAction m_KeyboardGamepad_QuestUI;
+    private readonly InputAction m_KeyboardGamepad_Run;
     public struct KeyboardGamepadActions
     {
         private @PlayerControls m_Wrapper;
@@ -519,6 +552,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         public InputAction @UseItem => m_Wrapper.m_KeyboardGamepad_UseItem;
         public InputAction @Hotkeys => m_Wrapper.m_KeyboardGamepad_Hotkeys;
         public InputAction @QuestUI => m_Wrapper.m_KeyboardGamepad_QuestUI;
+        public InputAction @Run => m_Wrapper.m_KeyboardGamepad_Run;
         public InputActionMap Get() { return m_Wrapper.m_KeyboardGamepad; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -543,6 +577,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @QuestUI.started += instance.OnQuestUI;
             @QuestUI.performed += instance.OnQuestUI;
             @QuestUI.canceled += instance.OnQuestUI;
+            @Run.started += instance.OnRun;
+            @Run.performed += instance.OnRun;
+            @Run.canceled += instance.OnRun;
         }
 
         private void UnregisterCallbacks(IKeyboardGamepadActions instance)
@@ -562,6 +599,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @QuestUI.started -= instance.OnQuestUI;
             @QuestUI.performed -= instance.OnQuestUI;
             @QuestUI.canceled -= instance.OnQuestUI;
+            @Run.started -= instance.OnRun;
+            @Run.performed -= instance.OnRun;
+            @Run.canceled -= instance.OnRun;
         }
 
         public void RemoveCallbacks(IKeyboardGamepadActions instance)
@@ -595,5 +635,6 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         void OnUseItem(InputAction.CallbackContext context);
         void OnHotkeys(InputAction.CallbackContext context);
         void OnQuestUI(InputAction.CallbackContext context);
+        void OnRun(InputAction.CallbackContext context);
     }
 }

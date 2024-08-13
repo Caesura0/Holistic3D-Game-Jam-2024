@@ -15,6 +15,8 @@ public class SimpleDialogueManager : MonoBehaviour
 
     [SerializeField] Dialogue defaultDialogue;
 
+
+
     Dialogue currentDialogue;
     DialogueTrigger conversant;
 
