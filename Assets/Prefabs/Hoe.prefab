@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2374116119352365184}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.9791999, y: -1.0033998, z: 0}
   m_LocalScale: {x: 0.7765, y: 0.7579, z: 1}
   m_ConstrainProportionsScale: 0
@@ -47,9 +47,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemStruct:
-    itemName: Hoe
-    itemSprite: {fileID: 1206274900, guid: 7c3607b2a5200824490e370150db179a, type: 3}
-    itemType: 1
+    itemName: PickAxe
+    itemSprite: {fileID: 21300000, guid: c4d58fadf04a7cf4581be425af3e52a5, type: 3}
+    itemType: 2
   quantity: 1
 --- !u!212 &1607237252888924518
 SpriteRenderer:
@@ -92,8 +92,8 @@ SpriteRenderer:
   m_SortingLayerID: 1934192313
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1817378960, guid: e4d0f1aacccfdb144a1552a5b940764c, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: c4d58fadf04a7cf4581be425af3e52a5, type: 3}
+  m_Color: {r: 0.8742138, g: 0.6507781, b: 0.33813924, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -132,7 +132,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}

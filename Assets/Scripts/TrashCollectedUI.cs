@@ -7,6 +7,7 @@ using System;
 public class TrashCollectedUI : MonoBehaviour
 {
     TextMeshProUGUI uiText;
+
     private void Awake()
     {
         uiText = GetComponentInChildren<TextMeshProUGUI>();

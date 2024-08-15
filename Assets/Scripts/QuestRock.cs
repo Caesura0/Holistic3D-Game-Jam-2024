@@ -1,18 +1,39 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity;
 
-public class QuestRock : MonoBehaviour
+public class QuestRock : Quest
 {
-    // Start is called before the first frame update
-    void Start()
+    bool readyToMake;
+
+    bool charcoalCollected;
+    bool sulferCollected;
+
+    private void Start()
     {
-        
+        Player.OnCharcolPickedUp += Player_OnCharcolPickedUp;
+        Player.OnSulferPickedUp += Player_OnSulferPickedUp;
     }
 
-    // Update is called once per frame
-    void Update()
+
+    private void Player_OnSulferPickedUp(int obj)
     {
-        
+        sulferCollected = true;
+        if (charcoalCollected)
+        {
+            readyToMake = true;
+        }
     }
+
+    private void Player_OnCharcolPickedUp(int obj)
+    {
+        charcoalCollected = true;
+        if(sulferCollected)
+        {
+            readyToMake = true;
+        }
+    }
+
+    
 }

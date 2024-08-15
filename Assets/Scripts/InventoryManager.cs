@@ -30,12 +30,18 @@ public class InventoryManager : MonoBehaviour
         RedrawUI();
     }
 
+    public int GetInventorySlotCount()
+    {
+        return inventoryUISlotList.Count;
+    }
+
     public void SelectUISlot(int index)
     {
-        Debug.Log("selected index" + index);
+
         if (inventoryUISlotList.Count > index)
         {
-            Debug.Log("inventory slot count " + inventoryUISlotList.Count);
+
+            SoundManager.Instance.PlaySwitchItemsSound();
             inventoryUISlotList[selectedInventoryIndex].UpdateSelectedVisual(false);
             selectedInventoryIndex = index;
 
@@ -45,9 +51,14 @@ public class InventoryManager : MonoBehaviour
 
     public bool ContainsItem(ItemType type)
     {
-        foreach(Item item in itemList.Keys)
+        foreach (Item item in itemList.Keys)
         {
-            if(item.itemType == type) return true;
+            if (item.itemType == type)
+            {
+                
+                return true;
+            }
+
         }
         return false;
     }
@@ -56,6 +67,19 @@ public class InventoryManager : MonoBehaviour
     {
         if (inventoryUISlotList.Count == 0) return null;
         return inventoryUISlotList[selectedInventoryIndex].GetItemInSlot(out int count);
+    }
+
+    public int CountCurrentMilk()
+    {
+        foreach (KeyValuePair<Item, int> entry in itemList)
+        {
+            if (entry.Key.itemType == ItemType.FullMilk)
+            {
+                return entry.Value;
+            }
+        }
+
+        return 0; // Return 0 if no FullMilk item is found
     }
 
     void RedrawUI()

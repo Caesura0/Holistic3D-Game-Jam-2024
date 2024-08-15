@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface IItemInteractable 
 {
-    public bool ItemInteract();
+    public bool ItemInteract(Player player);
 }

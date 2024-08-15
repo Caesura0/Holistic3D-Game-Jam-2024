@@ -43,15 +43,15 @@ public class CowController : MonoBehaviour, IItemInteractable
 
 
 
-    public bool ItemInteract()
+    public bool ItemInteract(Player player)
     {
         if(isMilked) { return false; }
         if (InventoryManager.Instance.GetSelectedItem() == itemToBeUsed)
         {
             if (InventoryManager.Instance.ContainsItem(ItemType.Bottle))
             {
+                SoundManager.Instance.PlayCowMooSound();
                 animator.Play("BrownCowHearts");
-                Debug.Log("containsBottle");
                 InventoryManager.Instance.RemoveItem(itemToBeUsed, 1);
                 InventoryManager.Instance.AddItem(itemToBeAdded, 1);
                 isMilked = true;

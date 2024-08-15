@@ -1,0 +1,48 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 822302b6802aab54bb134be918b7f703, type: 3}
+  m_Name: AudioSounds
+  m_EditorClassIdentifier: 
+  dialogueTyping:
+  - {fileID: 8300000, guid: 5e3dacdadad0f494ab326ed0e06c6e55, type: 3}
+  - {fileID: 8300000, guid: 77c0c4d7ed02ea04782340d51f2fcbda, type: 3}
+  - {fileID: 8300000, guid: da2eb078c3d712b42a1f125ba48ae0fc, type: 3}
+  - {fileID: 8300000, guid: 1adaed8d225c41747841a72120a44a19, type: 3}
+  openDialogue: []
+  questStarted: []
+  questFinished: []
+  axeSwing:
+  - {fileID: 8300000, guid: 3ed042cc3d5891a409adced9c1916cd9, type: 3}
+  axeChoppingTree:
+  - {fileID: 8300000, guid: 1593c63b11b20044da1902b29a5fb8f4, type: 3}
+  pickaxeSwing: []
+  pickaxeHit:
+  - {fileID: 8300000, guid: 40ea13c8aba284244be706d0cbc9dc86, type: 3}
+  watering:
+  - {fileID: 8300000, guid: b47da330f2f7f2f4dafc5e64a8890711, type: 3}
+  fillWateringCan: []
+  switchItems:
+  - {fileID: 8300000, guid: facd920ef5e9c224bbc4d5f52dd54d76, type: 3}
+  clickStart:
+  - {fileID: 8300000, guid: d39ba88310abcac47b678646cb4bc856, type: 3}
+  milkCow: []
+  cowMoo:
+  - {fileID: 8300000, guid: da8a54a66cef2f74ca81e4ed29761207, type: 3}
+  footsteps: []
+  itemPickup:
+  - {fileID: 8300000, guid: afbf73344846990469d972f75f99653e, type: 3}
+  chestUnlock:
+  - {fileID: 8300000, guid: 6fd11947596273b46bfb8e126fc229d6, type: 3}
+  chestLockedRattle:
+  - {fileID: 8300000, guid: 790828a27329deb44aaf2d6f22f643c2, type: 3}
+  questPopup:
+  - {fileID: 8300000, guid: e0030652596b62f47acf9905de98c018, type: 3}

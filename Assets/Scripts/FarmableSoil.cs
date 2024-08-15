@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,7 +16,7 @@ public class FarmableSoil : MonoBehaviour, IItemInteractable
     [SerializeField] LayerMask waterable;
     [SerializeField] LayerMask interactable;
 
-
+    public static event Action OnAnyTilePlantedAndWatered;
 
     bool isWatered;
     bool isPlanted;
@@ -26,7 +27,7 @@ public class FarmableSoil : MonoBehaviour, IItemInteractable
 
     }
 
-    public bool ItemInteract()
+    public bool ItemInteract(Player player)
     {
         if (InventoryManager.Instance.GetSelectedItem() != null )
         {
@@ -53,11 +54,15 @@ public class FarmableSoil : MonoBehaviour, IItemInteractable
     {
         if (!isWatered)
         {
-            var range = Random.Range(0, wateredSoilTiles.Length);
+            var range = UnityEngine.Random.Range(0, wateredSoilTiles.Length);
             wateredRenderer.sprite = wateredSoilTiles[range];
             wateredRenderer.gameObject.SetActive(true);
             isWatered = true;
             Mathf.RoundToInt(Mathf.Log(plantable.value, 2));
+            if (isPlanted)
+            {
+                OnAnyTilePlantedAndWatered?.Invoke();
+            }
             return true;
         }
         else
@@ -79,7 +84,11 @@ public class FarmableSoil : MonoBehaviour, IItemInteractable
             plantRenderer.gameObject.SetActive(true);
             isPlanted = true;
             InventoryManager.Instance.RemoveItem(InventoryManager.Instance.GetSelectedItem().Value, 1);
-            gameObject.layer = interactable.value;
+            //gameObject.layer = interactable.value;
+            if (isWatered)
+            {
+                OnAnyTilePlantedAndWatered?.Invoke();
+            }
             return true;
         }
         return false;

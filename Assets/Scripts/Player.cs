@@ -47,6 +47,8 @@ public class Player : MonoBehaviour
     Rigidbody2D rb;
     float radius = .3f;
 
+    ItemType itemType;
+
 
 
     private void Awake()
@@ -91,6 +93,8 @@ public class Player : MonoBehaviour
         CheckForInteract();
     }
 
+
+
     private void Update()
     {
         if (!SimpleDialogueManager.Instance.InDialogue && canMove)
@@ -114,11 +118,13 @@ public class Player : MonoBehaviour
     {
         if (canMove && !SimpleDialogueManager.Instance.InDialogue)
         {
+            Debug.Log("Check for items" + canMove);
             Item? item = InventoryManager.Instance.GetSelectedItem();
             if (item.HasValue)
             {
-                ItemType itemType = item.Value.itemType;
+                itemType = item.Value.itemType;
                 UseItem(itemType);
+                
             }
         }
     }
@@ -135,8 +141,32 @@ public class Player : MonoBehaviour
         {
             if (hit.transform != null && hit.transform.TryGetComponent<IItemInteractable>(out IItemInteractable itemInteractable))
             {
-                if (itemInteractable.ItemInteract())
+                if (itemInteractable.ItemInteract(this))
                 {
+                    switch (itemType)
+                    {
+                        case ItemType.Bottle:
+                            //SoundManager.Instance.PlayFillWateringCanSound();
+                            break;
+                        case ItemType.Hoe:
+                            SoundManager.Instance.PlayPickaxeHitSound();
+                            break;
+                        case ItemType.PickAxe:
+                            SoundManager.Instance.PlayPickaxeHitSound();
+                            break;
+                        case ItemType.Axe:
+                            
+                            break;
+                        case ItemType.WateringCan:
+                            
+                            break;
+                        case ItemType.Seed:
+                            
+                            break;
+                        default:
+                            
+                            break;
+                    }
                     break;
                 }
             }
@@ -153,11 +183,15 @@ public class Player : MonoBehaviour
                 break;
             case ItemType.Hoe:
                 HoeLogic();
+                SoundManager.Instance.PlayAxeSwingSound();
                 break;
             case ItemType.PickAxe:
                 PickAxeLogic();
+                Debug.Log("Pickaxe Use item" + canMove);
+                SoundManager.Instance.PlayAxeSwingSound();
                 break;
             case ItemType.Axe:
+                SoundManager.Instance.PlayAxeSwingSound();
                 AxeLogic();
                 break;
             case ItemType.WateringCan:
@@ -175,6 +209,7 @@ public class Player : MonoBehaviour
 
     private void SeedLogic()
     {
+        SoundManager.Instance.PlayItemPickupSound();
         OnAnimationEnd();
 
         //seed planting animation
@@ -183,6 +218,7 @@ public class Player : MonoBehaviour
 
     private void WateringCanLogic()
     {
+        SoundManager.Instance.PlayWateringSound();
         AnimationPlay("Watering");
 
         //watering sound
@@ -200,6 +236,7 @@ public class Player : MonoBehaviour
 
     private void PickAxeLogic()
     {
+        Debug.Log("pickaxe logic before animation" + canMove);
         AnimationPlay("Hoe");
 
 
@@ -214,6 +251,7 @@ public class Player : MonoBehaviour
     private void BottleLogic()
     {
         CheckForItemInteractable();
+        canMove = true;
         //if next to cow
         //and bottle is empty
         //play bottle sound
@@ -338,6 +376,7 @@ public class Player : MonoBehaviour
 
     public void AddItem(Item item, int quantity)
     {
+        SoundManager.Instance.PlayItemPickupSound();
         InventoryManager.Instance.AddItem(item, quantity);
 
     }
@@ -358,10 +397,17 @@ public class Player : MonoBehaviour
 
     public void OnAnimationEnd()
     {
-
+        Debug.Log("OnAnimationEnd" + canMove);
         CheckForItemInteractable();
+        Debug.Log("OnAnimationEnd after check for item interactable" + canMove);
+
+    }
+
+    public void CanMoveNow()
+    {
         canMove = true;
     }
+
 
 
 }

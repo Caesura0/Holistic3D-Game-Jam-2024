@@ -17,7 +17,7 @@ public class DestructableRock : MonoBehaviour, IItemInteractable
 
 
 
-    public bool ItemInteract()
+    public bool ItemInteract(Player player)
     {
         if (InventoryManager.Instance.GetSelectedItem() != null && InventoryManager.Instance.GetSelectedItem() == neededItem)
         {
@@ -28,7 +28,7 @@ public class DestructableRock : MonoBehaviour, IItemInteractable
                 Destroy(gameObject);
                 //playsound
                 //playparticleeffect
-                
+                player.SulferPickup();
             }
             return true;
             //play hit sound

@@ -19,7 +19,7 @@ public class DestructableTree: MonoBehaviour, IItemInteractable
     [SerializeField] GameObject visual;
 
 
-    public bool ItemInteract()
+    public bool ItemInteract(Player player)
     {
         if (InventoryManager.Instance.GetSelectedItem() != null && InventoryManager.Instance.GetSelectedItem() == neededItem)
         {
@@ -28,8 +28,9 @@ public class DestructableTree: MonoBehaviour, IItemInteractable
             if (hitCounter > 2)
             {
                 Destroy(gameObject);
-                //playsound
-                //playparticleeffect
+                //tree falling/breaking sound
+                player.WoodPickup();
+               
                 
             }
             //play hit sound

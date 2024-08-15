@@ -13,6 +13,9 @@ public class DialogueTrigger : MonoBehaviour, IInteractable
     [SerializeField] string conversantName;
 
     [SerializeField] ItemChest rewardChest;
+    [SerializeField] ItemChest questStartChest;
+
+    [SerializeField] bool finishQuestByTalking;
 
     //[SerializeField] bool shouldRandomize;
 
@@ -27,7 +30,10 @@ public class DialogueTrigger : MonoBehaviour, IInteractable
     {
         validDialogueList = new List<Dialogue>();
         NPCQuest = GetComponent<Quest>();
-        NPCQuest.chest = rewardChest;
+        if (rewardChest != null)
+        {
+            NPCQuest.chest = rewardChest;
+        }
     }
 
     public string GetName()
@@ -36,6 +42,10 @@ public class DialogueTrigger : MonoBehaviour, IInteractable
     }
     public void Interact(Player interactor)
     {
+        if(NPCQuest != null)
+        {
+            NPCQuest.AssignPlayer(interactor);
+        }
 
         foreach (Dialogue dialogue in GetDialogueToSay())
         {
@@ -68,8 +78,12 @@ public class DialogueTrigger : MonoBehaviour, IInteractable
 
     public List<Dialogue> GetDialogueToSay()
     {
-        
-        if(NPCQuest != null && questCompleteDialogueList.Count > 0 && NPCQuest.GetQuestStatus() == QuestStatus.Finished)
+        if (finishQuestByTalking)
+        {
+            NPCQuest.CheckQuestIsFinished();
+        }
+
+        if (NPCQuest != null && questCompleteDialogueList.Count > 0 && NPCQuest.GetQuestStatus() == QuestStatus.Finished)
         {
             return questCompleteDialogueList;
         }
@@ -90,7 +104,15 @@ public class DialogueTrigger : MonoBehaviour, IInteractable
             Debug.Log("quest inside");
             NPCQuest.StartQuest();
             questGiven = true;
+            
             //QuestUIManager.Instance.AddQuest(NPCQuest);
+        }
+
+
+
+        if(NPCQuest != null && NPCQuest.questStatus == QuestStatus.Finished)
+        {
+            rewardChest.ShakeChest();
         }
 
                 
