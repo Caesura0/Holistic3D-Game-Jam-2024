@@ -13,7 +13,12 @@ MonoBehaviour:
   m_Name: CharcoalBurnerStarted
   m_EditorClassIdentifier: 
   dialogueLines:
-  - "Thanks for getting me that wood. Here\u2019s your charcoal. I guess there are
-    some helpful people still out there."
+  - "Hey. Yeah, I guess I can give you some charcoal. I\u2019m going to need something
+    in return for it though."
+  - "I\u2019m going to need something in return for it though. I need 5 pieces of
+    wood for a project I\u2019m working on\u2026  but I don\u2019t have a spare axe
+    for you to use. "
+  - "You\u2019re going to have to find the farmer to the east and see if he has one
+    for you to borrow. "
   hasSaidDialogue: 0
   isRepeatableDialogue: 0

@@ -7,6 +7,7 @@ using UnityEngine;
 public class Dialogue : ScriptableObject
 {
     //public string conversantName;
+    [TextArea(3,5)]
     public List<string> dialogueLines;
     //public List<ItemConfig> inventoryItemList;
     bool hasGivenItems;

@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: Alchemist Started
   m_EditorClassIdentifier: 
   dialogueLines:
-  - So he needs some explosives to blow up the rock so the rivery will flow again?
   - If you bring me the missing materials i can make something.
-  - I'll need 5 chunks of sulfer ore and 10 pieces of charcol
+  - I'll need 5 chunks of sulfur ore and 5 pieces of charcoal
+  - You can get charcoal from someone in the village. Sulfer is east of the village
+    right next to the riverbed.
   hasSaidDialogue: 0
   isRepeatableDialogue: 0

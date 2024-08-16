@@ -10,8 +10,8 @@ public class DestroyRockQuest : Quest
     [SerializeField] GameObject largeBoulder;
     [SerializeField] GameObject riverTilemap;
 
-    int charcoal;
-    int sulfer;
+    public int charcoal;
+    public int sulfer;
 
 
     private void Start()
@@ -44,6 +44,11 @@ public class DestroyRockQuest : Quest
             FinishQuest();
             base.CheckQuestIsFinished();
         }
+    }
+
+    public override void  BlowUpRock()
+    {
+        StartCoroutine(SceneFadeTransition.Instance.Transition());
     }
     
 

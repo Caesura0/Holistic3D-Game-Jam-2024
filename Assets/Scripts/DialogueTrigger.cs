@@ -30,6 +30,8 @@ public class DialogueTrigger : MonoBehaviour, IInteractable
     Quest NPCQuest;
     bool questGiven = false;
     bool rewardGiven = false;
+
+    bool blownup = false;
     private void Start()
     {
         validDialogueList = new List<Dialogue>();
@@ -82,18 +84,24 @@ public class DialogueTrigger : MonoBehaviour, IInteractable
 
     public List<Dialogue> GetDialogueToSay()
     {
-        if (finishQuestByTalking)
+        if (finishQuestByTalking && !blownup)
         {
             NPCQuest.CheckQuestIsFinished();
         }
 
-        if (NPCQuest != null && questCompleteDialogueList.Count > 0 && NPCQuest.GetQuestStatus() == QuestStatus.Finished)
+        if (NPCQuest != null && questCompleteDialogueList.Count > 0 && NPCQuest.GetQuestStatus() == QuestStatus.Finished && !blownup)
         {
+            
             return questCompleteDialogueList;
         }
         else if(NPCQuest != null && questStartedDialogueList.Count > 0 && NPCQuest.GetQuestStatus() == QuestStatus.Started)
         {
             return questStartedDialogueList;
+        }
+
+        else if( isAlchemist && NPCQuest.GetQuestStatus() == QuestStatus.Finished && blownup)
+        {
+            return finalAlchemistSpeak;
         }
         else
         {
@@ -124,13 +132,21 @@ public class DialogueTrigger : MonoBehaviour, IInteractable
 
         if (NPCQuest != null && NPCQuest.questStatus == QuestStatus.Finished)
         {
+            if (isAlchemist && !blownup)
+            {
+                blownup = true;
+                    NPCQuest.BlowUpRock();
+  
+            }
             if (questStartChest != null)
             {
                 rewardChest.ShakeChest();
             }
         }
 
-                
+
+
+
 
 
     }

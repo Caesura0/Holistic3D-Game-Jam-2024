@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueLines:
   - I see you have obtained the sulfur and charcoal necessary to complete my explosion
-    potion! Here goes nothing!
+    potion! I'll be back. Here goes nothing!
   hasSaidDialogue: 0
   isRepeatableDialogue: 0

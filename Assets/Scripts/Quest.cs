@@ -81,4 +81,9 @@ public abstract class Quest : MonoBehaviour
     {
         return questStatus;
     }
+
+    public virtual void BlowUpRock()
+    {
+        
+    }
 }

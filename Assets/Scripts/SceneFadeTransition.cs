@@ -34,7 +34,7 @@ public class SceneFadeTransition : MonoBehaviour
 
     }
 
-    private IEnumerator Transition()
+    public IEnumerator Transition()
     {
         isTransitioning = true;
 
@@ -43,7 +43,6 @@ public class SceneFadeTransition : MonoBehaviour
 
         // Move the player to the new position
         //playerTransform.position = targetPosition.position;
-        Debug.Log("MovingPlayer");
 
         // Fade in
         yield return StartCoroutine(Fade(0));
