@@ -5,7 +5,7 @@ using UnityEngine;
 public class QuestPlantWaterFarm : Quest
 {
     int soilCompleted;
-    int soilNeeded = 30;
+    int soilNeeded = 12;
 
     private void Start()
     {
@@ -20,11 +20,11 @@ public class QuestPlantWaterFarm : Quest
 
     public void CheckQuestCompletion()
     {
-        if (soilCompleted >= soilNeeded)
+        if (soilCompleted >= soilNeeded && questStatus == QuestStatus.Started)
         {
-            player.CharcolPickup();
-            player.CharcolPickup();
-            player.CharcolPickup();
+            //player.CharcolPickup();
+            //player.CharcolPickup();
+            //player.CharcolPickup();
             FinishQuest();
         }
     }

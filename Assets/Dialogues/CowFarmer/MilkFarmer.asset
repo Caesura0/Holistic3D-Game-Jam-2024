@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8091bb84708ba3d4ca84b961481dabec, type: 3}
+  m_Name: MilkFarmer
+  m_EditorClassIdentifier: 
+  dialogueLines:
+  - "Hi. It\u2019s nice to see a fresh face around here.  I do have a pickaxe for
+    you to use but I need help milking my cows."
+  - "Not enough hands on the farm since The Factory opened, and I can\u2019t do everything
+    alone."
+  - "Could you please fill these 5 milk jugs up for me and I\u2019ll find the pickaxe
+    for you in the meantime?"
+  - 'There are some milk bottles in the chest next to my house. '
+  hasSaidDialogue: 0
+  isRepeatableDialogue: 0

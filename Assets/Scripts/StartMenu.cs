@@ -10,7 +10,7 @@ public class StartMenu : MonoBehaviour
     [SerializeField] private CanvasGroup canvasGroup;
     [SerializeField] private float fadeDuration = 1f;
     [SerializeField] private AudioClip buttonSound;
-    [SerializeField] private string nextSceneName = "GameScene"; // Set your next scene name here
+    [SerializeField] private string nextSceneName = "LetterFromGrandpa"; // Set your next scene name here
 
     private AudioSource audioSource;
 

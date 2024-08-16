@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8091bb84708ba3d4ca84b961481dabec, type: 3}
+  m_Name: MilkFarmerFinished
+  m_EditorClassIdentifier: 
+  dialogueLines:
+  - 'Thank you for doing this for me. I hope to be able to provide more for the town
+    now. '
+  - Here is the pickaxe.  I expect it will prove useful for you. The river is to
+    the east of the village if you were looking for it. Lots of sulfur.
+  hasSaidDialogue: 0
+  isRepeatableDialogue: 0

@@ -7,8 +7,14 @@ EditorBuildSettings:
   m_Scenes:
   - enabled: 1
     path: Assets/Scenes/MainMenu.unity
-    guid: 92ca7c6e63291224aa7c62d8fb83cb9f
+    guid: cbfe8e09d6ed6e3468241b5a13805e03
   - enabled: 1
     path: Assets/Scenes/GameScene.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
+  - enabled: 1
+    path: Assets/Scenes/Victory.unity
+    guid: 92ca7c6e63291224aa7c62d8fb83cb9f
+  - enabled: 1
+    path: Assets/Scenes/LetterFromGrandpa.unity
+    guid: 3dd186fef6ed6074497d05ed892981d3
   m_configObjects: {}

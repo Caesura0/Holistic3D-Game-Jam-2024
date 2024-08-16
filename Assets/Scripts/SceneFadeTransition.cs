@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SceneFadeTransition : MonoBehaviour
 {
@@ -86,5 +87,27 @@ public class SceneFadeTransition : MonoBehaviour
         }
 
         fadeCanvasGroup.alpha = targetAlpha;
+    
+    }
+
+    public IEnumerator FadeInSceneGameEnd(float targetAlpha)
+    {
+        float startAlpha = fadeCanvasGroup.alpha;
+        float time = 0;
+
+        while (time < fadeDuration)
+        {
+            fadeCanvasGroup.alpha = Mathf.Lerp(startAlpha, targetAlpha, time / fadeDuration);
+            time += Time.deltaTime;
+            yield return null;
+        }
+        if (targetAlpha == 1)
+        {
+            yield return new WaitForSeconds(.5f);
+        }
+
+        fadeCanvasGroup.alpha = targetAlpha;
+        SceneManager.LoadScene(2);
     }
 }
+

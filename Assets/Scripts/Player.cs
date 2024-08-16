@@ -211,6 +211,9 @@ public class Player : MonoBehaviour
     {
         SoundManager.Instance.PlayItemPickupSound();
         OnAnimationEnd();
+        CanMoveNow();
+
+       
 
         //seed planting animation
         //instantiate 
@@ -364,7 +367,8 @@ public class Player : MonoBehaviour
     }
     public void CharcolPickup()
     {
-        CharcolPickedUp++;
+        CharcolPickedUp += 5;
+        Debug.Log("charcol called");
         OnCharcolPickedUp?.Invoke(CharcolPickedUp);
     }
     public void WoodPickup()
@@ -405,6 +409,7 @@ public class Player : MonoBehaviour
 
     public void CanMoveNow()
     {
+        animator.Play("Idle");
         canMove = true;
     }
 

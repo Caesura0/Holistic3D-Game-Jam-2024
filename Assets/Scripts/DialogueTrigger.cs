@@ -10,12 +10,16 @@ public class DialogueTrigger : MonoBehaviour, IInteractable
     [SerializeField] List<Dialogue> questStartedDialogueList;
 
     [SerializeField] List<Dialogue> questCompleteDialogueList;
+
+
+    [SerializeField] List<Dialogue> finalAlchemistSpeak;
     [SerializeField] string conversantName;
 
     [SerializeField] ItemChest rewardChest;
     [SerializeField] ItemChest questStartChest;
 
     [SerializeField] bool finishQuestByTalking;
+    [SerializeField] bool isAlchemist;
 
     //[SerializeField] bool shouldRandomize;
 
@@ -25,7 +29,7 @@ public class DialogueTrigger : MonoBehaviour, IInteractable
 
     Quest NPCQuest;
     bool questGiven = false;
-
+    bool rewardGiven = false;
     private void Start()
     {
         validDialogueList = new List<Dialogue>();
@@ -101,18 +105,29 @@ public class DialogueTrigger : MonoBehaviour, IInteractable
         Debug.Log(NPCQuest.GetQuestName());
         if (NPCQuest != null && !questGiven)
         {
-            Debug.Log("quest inside");
+            if(questStartChest != null)
+            {
+                questStartChest.UnlockChest();
+                questStartChest.ShakeChest();
+            }
+    
             NPCQuest.StartQuest();
             questGiven = true;
             
             //QuestUIManager.Instance.AddQuest(NPCQuest);
         }
 
-
-
-        if(NPCQuest != null && NPCQuest.questStatus == QuestStatus.Finished)
+        if (NPCQuest != null && NPCQuest.questStatus == QuestStatus.Started && questStartChest != null)
         {
-            rewardChest.ShakeChest();
+            questStartChest.ShakeChest();
+        }
+
+        if (NPCQuest != null && NPCQuest.questStatus == QuestStatus.Finished)
+        {
+            if (questStartChest != null)
+            {
+                rewardChest.ShakeChest();
+            }
         }
 
                 

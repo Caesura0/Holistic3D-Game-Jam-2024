@@ -69,7 +69,11 @@ public abstract class Quest : MonoBehaviour
         OnAnyQuestFinished?.Invoke(this, EventArgs.Empty);
         OnAnyQuestChanged?.Invoke(this, new QuestChangedEventArgs(questName, questStatus.ToString()));
         QuestUIManager.Instance.RedrawQuestList();
-        chest.UnlockChest();
+        if (chest != null)
+        {
+            chest.UnlockChest();
+        }
+
         SoundManager.Instance.PlayQuestFinishedSound();
         
     }

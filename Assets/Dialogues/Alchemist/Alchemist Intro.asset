@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8091bb84708ba3d4ca84b961481dabec, type: 3}
+  m_Name: Alchemist Intro
+  m_EditorClassIdentifier: 
+  dialogueLines:
+  - 'Hello, glad you made it here safely. '
+  - 'The Factory left us with no way to use the river after causing the landslide
+    and leaving town for us all to deal with it. I am sure we can unblock it if I
+    have the right supplies.  '
+  - I could use sulfur and charcoal to make something that should do the trick.
+  - 'You can get sulfur from the river using the rocks with yellow crystals and charcoal
+    from the charcoal maker. I hear the cow farmer north of the town has a spare
+    pickaxe on his farm north of the town. '
+  - 'The charcoal maker is in the town by the odd looking trees. '
+  hasSaidDialogue: 0
+  isRepeatableDialogue: 0

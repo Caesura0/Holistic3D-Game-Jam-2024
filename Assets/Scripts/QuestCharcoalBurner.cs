@@ -5,9 +5,9 @@ using UnityEngine;
 public class QuestCharcoalBurner : Quest
 {
 
-
+    bool rewardGiven;
     int woodPickedUp;
-    int woodAssigned = 6;
+    int woodAssigned = 5;
     private void Start()
 
     {
@@ -19,18 +19,35 @@ public class QuestCharcoalBurner : Quest
         woodPickedUp++;
         SoundManager.Instance.PlayItemPickupSound();
 
-        //if (woodPickedUp == woodAssigned && questStatus == QuestStatus.Started)
+        //if (woodPickedUp >= woodAssigned && questStatus == QuestStatus.Started)
         //{
         //    FinishQuest();
         //}
     }
 
-    public override void StartQuest()
+    public override void CheckQuestIsFinished()
     {
-        if (woodPickedUp == woodAssigned)
+        if (woodPickedUp >= woodAssigned && !rewardGiven)
         {
+            
+            player.CharcolPickup();
             FinishQuest();
         }
+        base.CheckQuestIsFinished();
+    }
+
+    public override void FinishQuest()
+    {
+        rewardGiven = true;
+        base.FinishQuest();
+    }
+
+    public override void StartQuest()
+    {
+        //if (woodPickedUp >= woodAssigned)
+        //{
+        //    FinishQuest();
+        //}
         base.StartQuest();
     }
 }

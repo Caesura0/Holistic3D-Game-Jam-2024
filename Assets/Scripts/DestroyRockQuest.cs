@@ -24,12 +24,13 @@ public class DestroyRockQuest : Quest
 
     void Player_OnSulferPickedUp(int sulfer)
     {
-        sulfer++;
+        this.sulfer++;
     }
 
     void Player_OnCharcoalPickedUp( int charcoal)
     {
-        charcoal++;
+        Debug.Log("charcol");
+        this.charcoal++;
     }
 
     public override void CheckQuestIsFinished()
